@@ -2,31 +2,31 @@
 
 ## Overview
 ##### Training
-- Framework: PyTorch
-- Model: Densenet121
-- Data: kaggle data, [external data](http://www.proteinatlas.org/)
-- Augmentation: HorizontalFlip, VerticalFlip, Lighter/Darker
-- Normalize: kaggle data and external data with different mean and std
-- Optimizer: SGD
-- Loss: Binary Cross Entropy Loss (no weight)
-- Learning rate: starts at 0.03 and ends at 0.00003
-- Scheduler: Multi Step Learning Rates (by my experience)
-- Data imbalance: OverSampling
-- Image size: 512
-- Batch size: 8
-- Epochs: 24
-- CV: 5-fold
+- Framework: `PyTorch`
+- Model: `Densenet121`
+- Data: `kaggle data`, [`external data`](http://www.proteinatlas.org/)
+- Augmentation: `horizontalflip, verticalflip, rotate, shear, lighter/darker`
+- Normalize: `kaggle data and external data with different mean and std`
+- Optimizer: `SGD`
+- Loss: `Binary Cross Entropy Loss (no weight)`
+- Learning rate: `starts at 0.03 and ends at 0.00003`
+- Scheduler: `Multi Step Learning Rates (by my experience)`
+- Data imbalance: `OverSampling`
+- Image size: `512`
+- Batch size: `8`
+- Epochs: `24`
+- CV: `5-fold`
 
 ##### Prediciton
-- Threshold: search the best threshold for each class with valida set
-- TTA number: 4
-- TTA augmentation: 2-HorizontalFlip x 2-VerticalFlip, Normalize
-- Average mean ensemble: 5-flod * 4-TTA * 3-threshold = 60
+- Threshold: `search the best threshold for each class with valida set`
+- TTA number: `4`
+- TTA augmentation: `2-horizontalflip x 2-verticalflip`
+- Average mean ensemble: `5-flod * 4-TTA * 3-threshold = 60`
 
 ##### Result
 - Training takes ~35 hours pre single fold on GTX 1070
-- Public LB: 0.566
-- Private LB: 0.546 (28th)
+- Public LB: `0.566`
+- Private LB: `0.546 (28th)`
 
 
 ## Observations
@@ -37,7 +37,7 @@
 - TTA helps too
 - Put all images into SSD faster than HDD in training.
 - Threshold is crucial, and different threshold have a great influence on the LB score.
-The threshold I searched by valid set lowered my score at first. So I use the constant threshold (0.15) for a long time
+The threshold I searched by valid set lowered my score at first. So I use the constant threshold (0.15) for a long time.
 The searched threshold for each class varies from 0.1 to 0.9 and different, and I cannot find any relationship between rare class and its threshold.
 I just want to give up to use searched threshold until I found that using smaller threshold would increase the score (not always).
 So I just multiply each searched threshold by a factor(~0.4). That mean I want predicted more target and get high recall.
@@ -47,6 +47,7 @@ I think the reason may be that the wrong classification can be eliminated by tta
 - Weighted BCE loss work worse for me, and I have no time to make it work better.
 - Ensemble 256x256 with 512x512 lower my score, and I just discarded the result predicted by smaller images.
 - Leak data can only improve public LB, not helpful for private LB.
+- Complex models work badly, for example resnet152, densenet161. 
 ##### Not sure
 - Adam doesn't work well on my model, it's most likely that I didn't find a suitable learning rate.
 - Weighted ensemble may work, but I think it is easy overfitting to public LB .
@@ -178,6 +179,23 @@ for p in range(len(sample_submission_df)):
     labels.append(all_target)
 ```
 
+- search threshold for each class
+```python
+thresholds = np.linspace(0, 1, 100)
+test_threshold = 0.5 * np.ones(28)
+best_threshold = np.zeros(28)
+best_val = np.zeros(28)
+for i in range(28):
+    for threshold in thresholds:
+        test_threshold[i] = threshold
+        score = f1_score(np.array(all_target), np.array(all_pred) > test_threshold, average='macro')
+        if score > best_val[i]:
+            best_threshold[i] = threshold
+            best_val[i] = score
+    print("Threshold[%d] %0.6f, F1: %0.6f" % (i, best_threshold[i], best_val[i]))
+    test_threshold[i] = best_threshold[i]
+```
+
 
 ## For help
 - If someone have any questions and suggestions,please tell me!!!<br>
@@ -186,13 +204,14 @@ Email: scsncfb@126.com
 ## Best solution
 |rank   |solution             |github         |author                   |
 |-------|---------------------|---------------|-------------------------|
-|4th|[4st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77300)|Github code|Dieter|
-|7th|[7st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77269)|Github code|Guanshuo Xu|
-|8th|[8st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77251)|Github code|Sergei Fironov|
+|4th|[4th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77300)|Github code|Dieter|
+|7th|[7th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77269)|Github code|Guanshuo Xu|
+|8th|[8th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77251)|Github code|Sergei Fironov|
 |11th|[11st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77282)|Github code|Gary, shisu|
-|25th|[25st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77276)|Github code|Soonhwan Kwon|
-|32th|[32st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77285)|Github code|Bac Nguyen|
-|35th|[35st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77256)|[Github code](https://github.com/ildoonet/kaggle-human-protein-atlas-image-classification)|Ildoo Kim|
+|25th|[25th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77276)|Github code|Soonhwan Kwon|
+|31st|[32st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77299)|Github code|zhangboshen|
+|32nd|[32nd Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77285)|Github code|Bac Nguyen|
+|35th|[35th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77256)|[Github code](https://github.com/ildoonet/kaggle-human-protein-atlas-image-classification)|Ildoo Kim|
 
 
 
