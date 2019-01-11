@@ -209,7 +209,7 @@ Email: scsncfb@126.com
 |8th|[8th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77251)|Github code|Sergei Fironov|
 |11th|[11st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77282)|Github code|Gary, shisu|
 |25th|[25th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77276)|Github code|Soonhwan Kwon|
-|31st|[32st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77299)|Github code|zhangboshen|
+|31st|[31st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77299)|Github code|zhangboshen|
 |32nd|[32nd Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77285)|Github code|Bac Nguyen|
 |35th|[35th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77256)|[Github code](https://github.com/ildoonet/kaggle-human-protein-atlas-image-classification)|Ildoo Kim|
 
