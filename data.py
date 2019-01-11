@@ -36,30 +36,6 @@ class HumanDataset(Dataset):
     def __len__(self):
         return len(self.images_df)
 
-    # def __getitem__(self, index):
-    #     X = self.read_images(index)
-    #     if not self.mode == "test":
-    #         labels = np.array(list(map(int, self.images_df.iloc[index].Target.split(' '))))
-    #         y  = np.eye(config.num_classes,dtype=np.float)[labels].sum(axis=0)
-    #     else:
-    #         y = str(self.images_df.iloc[index].Id.absolute())
-    #     if self.augument:
-    #         X = self.augumentor(X)
-    #     is_external = self.images_df.iloc[index].is_external
-    #     #X = T.Compose([T.ToPILImage(),T.ToTensor(),T.Normalize([0.08069, 0.05258, 0.05487, 0.08282], [0.13704, 0.10145, 0.15313, 0.13814])])(X)
-    #     if is_external == 0:
-    #         X = T.Compose([
-    #             T.ToPILImage(),
-    #             T.ToTensor(),
-    #             T.Normalize([0.0789, 0.0529, 0.0546, 0.0814], [0.147, 0.113, 0.157, 0.148])
-    #         ])(X)
-    #     else:
-    #         X = T.Compose([
-    #             T.ToPILImage(),
-    #             T.ToTensor(),
-    #             T.Normalize([0.1177, 0.0696, 0.0660, 0.1056], [0.179, 0.127, 0.176, 0.166])
-    #         ])(X)
-    #     return X.float(),y
     def __getitem__(self, index):
         X = self.read_images(index)
         if not self.mode == "test":
@@ -153,68 +129,6 @@ def create_class_weight(labels_dict, mu=0.5):
     return class_weight, class_weight_log
 
 
-# def process_df(train_df, external_df, test_df):
-#     train_data_path = config.train_data
-#     external_data_path = config.external_data
-#     test_data_path = config.test_data
-#     if not isinstance(train_data_path, pathlib.Path):
-#         train_data_path = pathlib.Path(train_data_path)
-#     if not isinstance(external_data_path, pathlib.Path):
-#         external_data_path = pathlib.Path(external_data_path)
-#     if not isinstance(test_data_path, pathlib.Path):
-#         test_data_path = pathlib.Path(test_data_path)
-#
-#     train_df.Id = train_df.Id.apply(lambda x: train_data_path / x)
-#     external_df.Id = external_df.Id.apply(lambda x: external_data_path / x)
-#     test_df.Id = test_df.Id.apply(lambda x: test_data_path / x)
-#     train_df['target_vec'] = train_df['Target'].map(lambda x: list(map(int, x.strip().split())))
-#     external_df['target_vec'] = external_df['Target'].map(lambda x: list(map(int, x.strip().split())))
-#     train_df['is_external'] = 0
-#     external_df['is_external'] = 1
-#     test_df['is_external'] = 0
-#
-#     count_labels_raw = Counter(list(chain.from_iterable(train_df['target_vec'].values)))
-#     class_weight_raw, class_weight_log_raw = create_class_weight(count_labels_raw, 0.3)
-#     cwl_raw = np.ones(len(class_weight_raw))
-#     for key, value in class_weight_raw.items():
-#         cwl_raw[key] = value
-#     cwl_raw_rank = cwl_raw.copy()  # sort <
-#     cwl_raw_rank.sort()
-#     chose_num = 28
-#     if chose_num is not 0:
-#         min_value = cwl_raw_rank[len(cwl_raw_rank) - chose_num]
-#
-#         def calculate_chose_or_not(row):
-#             row.loc['chose'] = 0
-#             for num in row.target_vec:
-#                 if cwl_raw[num] >= min_value:
-#                     row.loc['chose'] = 1
-#             return row
-#
-#         external_df = external_df.apply(calculate_chose_or_not, axis=1)
-#     else:
-#         external_df['chose'] = 0
-#     external_df = external_df.loc[external_df['chose'] == 1]
-#     # external_df.to_csv('external.csv', index=None)
-#     external_df = external_df.drop(['chose'], axis=1)
-#
-#     all_df = pd.concat([train_df, external_df], ignore_index=True)
-#     count_labels = Counter(list(chain.from_iterable(all_df['target_vec'].values)))
-#     class_weight, class_weight_log = create_class_weight(count_labels, 0.3)
-#     cwl = np.ones((len(class_weight_log)))
-#     for key, value in class_weight_log.items():
-#         cwl[key] = value
-#
-#     def calculate_freq(row):
-#         row.loc['freq'] = 0
-#         for num in row.target_vec:
-#             row.loc['freq'] = max(row.loc['freq'], class_weight_log[num])
-#         return row
-#
-#     all_df = all_df.apply(calculate_freq, axis=1)
-#     # print(count_labels)
-#     # print(class_weight_log)
-#     return all_df, test_df, cwl
 def process_df(train_df, external_df, test_df):
     train_data_path = config.train_data
     external_data_path = config.external_data

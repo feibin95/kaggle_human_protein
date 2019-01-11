@@ -53,8 +53,8 @@ import matplotlib.pyplot as plt
 
 
 files = os.listdir('/media/femi/Data/datasets/HumanProtein/external_data_HPAv18')
-# csv_file = "/media/femi/Data/datasets/HumanProtein/external_data_HPAv18.csv"
-csv_file = "add_file.csv"
+csv_file = "./my_utils/external_data_HPAv18.csv"
+# csv_file = "add_file.csv"
 
 def get_html(url):
     i = 0
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     print('Parent process %s.' % os.getpid())
     img_list = pd.read_csv(csv_file)['Id']
     list_len = len(img_list)
-    process_num = 1
+    process_num = 100
     open('log', 'a').write('\n')
     p = Pool(process_num)
     for i in range(process_num):

@@ -354,7 +354,7 @@ def main():
         search_thresholds(search_loader, model)
 
     if config.is_test:
-        knums = [0.4]
+        knums = config.threshold_factor
         for knum in knums:
             for f in range(5):
                 best_model_name = "%s/%s_fold_%s_model_best_%s.pth.tar" % (

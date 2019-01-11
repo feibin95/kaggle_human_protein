@@ -14,18 +14,19 @@ class DefaultConfigs(object):
     img_weight = 512
     img_height = 512
     channels = 4
-    lr = 0.00003
+    lr = 0.03
     batch_size = 8
-    epochs = 4
+    epochs = 24
     threshold = 0.15
     multiply = 1.3  # when weighted sampler  sample_num / raw_data_num
     min_sampling_limit = 0.5  # the min limit of log class weight
-    fold = 12
+    fold = 12  # for me the 0,1 is test, and fold=2 is the start
     kfold_index = (fold - 2) % 5 + 1 # 2
+    threshold_factor = [0.3, 0.4, 0.5]
     best = "f1"  # best_f1 or best_loss to switch for test
-    is_train = False
+    is_train = True
     is_train_after_crash = False
-    is_test = True
+    is_test = False
     is_search_thres = False
     tta = True
     opt_thres = True
