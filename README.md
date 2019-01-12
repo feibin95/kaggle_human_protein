@@ -6,7 +6,7 @@
 |4th|[4th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77300)|Github code|Dieter|
 |7th|[7th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77269)|Github code|Guanshuo Xu|
 |8th|[8th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77251)|Github code|Sergei Fironov|
-|11th|[11st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77282)|Github code|Gary, shisu|
+|11th|[11st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77282)|[Github code](https://github.com/Gary-Deeplearning/Human_Protein)|Gary, shisu|
 |12nd|[12nd Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77325)|Github code|Arnau Raventós|
 |15th|[15th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77322)|Github code|NguyenThanhNhan|
 |25th|[25th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77276)|Github code|Soonhwan Kwon|
