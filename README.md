@@ -81,7 +81,7 @@ cd kaggle_human_protein
 conda create --name kaggle python=3.6
 source activate kaggle
 pip install numpy==1.15.4 torch==0.4.0 torchvision==0.2.1 scikit-learn==0.20.0 pandas==0.23.4 imgaug==0.2.6 tqdm==4.29.1 pretrainedmodels==0.7.4
-conda install -c menpo opencv3 
+conda install -c Menno opencv3 
 ```
 
 - 3.download data
