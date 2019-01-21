@@ -2,6 +2,7 @@
 ## Best solution
 |rank   |solution             |github         |author                   |
 |-------|---------------------|---------------|-------------------------|
+|1st|[1st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/78109)|Github code|bestfittingS|
 |3rd|[3rd Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77320)|Github code|pudae|
 |4th|[4th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77300)|Github code|Dieter|
 |5th|[5th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77731)|Github code|lingyundev|
@@ -12,8 +13,8 @@
 |15th|[15th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77322)|Github code|NguyenThanhNhan|
 |25th|[25th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77276)|Github code|Soonhwan Kwon|
 |29th|[29th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77299)|Github code|zhangboshen|
-|30nd|[30nd Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77285)|Github code|Bac Nguyen|
-|33th|[33th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77256)|[Github code](https://github.com/ildoonet/kaggle-human-protein-atlas-image-classification)|Ildoo Kim|
+|30th|[30th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77285)|Github code|Bac Nguyen|
+|33rd|[33rd Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77256)|[Github code](https://github.com/ildoonet/kaggle-human-protein-atlas-image-classification)|Ildoo Kim|
 
 ## Overview
 ##### Training
