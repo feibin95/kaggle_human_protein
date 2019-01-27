@@ -3,7 +3,7 @@
 |rank   |solution             |github         |author                   |
 |-------|---------------------|---------------|-------------------------|
 |1st|[1st Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/78109)|Github code|bestfitting|
-|3rd|[3rd Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77320)|Github code|pudae|
+|3rd|[3rd Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77320)|[Github code](https://github.com/pudae/kaggle-hpa)|pudae|
 |4th|[4th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77300)|Github code|Dieter|
 |5th|[5th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77731)|Github code|lingyundev|
 |7th|[7th Place Solution](https://www.kaggle.com/c/human-protein-atlas-image-classification/discussion/77269)|Github code|Guanshuo Xu|
